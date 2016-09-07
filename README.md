@@ -26,7 +26,6 @@ None
 Here is the list of all variables and their default values:
 
 ```yaml
----
 # defaults file for hadenlabs.haproxy
 ```
 
@@ -42,9 +41,9 @@ See the [examples](./examples/) directory.
 To run this playbook with default settings, create a basic playbook like this:
 
 ```yaml
-    - hosts: servers
-      roles:
-        - hadenlabs.haproxy
+- hosts: servers
+  roles:
+    - hadenlabs.haproxy
 ```
 
 ## License
@@ -61,7 +60,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Credits
 
-- [author][link-author]
+- [Author][link-author]
 - [All Contributors][link-contributors]
 
 
