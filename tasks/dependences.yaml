@@ -1,5 +1,5 @@
 ---
-# task file for hadenlabs.haproxy
+# task file for dgnest.haproxy
 
 - name: Update package repositories
   sudo: yes

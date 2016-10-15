@@ -1,6 +1,6 @@
 ---
 
-# task for hadenlabs.haproxy
+# task for dgnest.haproxy
 
 
 - name: include os specific variables

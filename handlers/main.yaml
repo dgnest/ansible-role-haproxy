@@ -1,4 +1,4 @@
-# handlers for hadenlabs.haproxy
+# handlers for dgnest.haproxy
 
 - name: restart haproxy
   sudo: yes

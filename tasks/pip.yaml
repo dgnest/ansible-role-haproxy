@@ -1,5 +1,5 @@
 ---
-# task for hadenlabs.haproxy
+# task for dgnest.haproxy
 
 - name: Install packages via pip haproxy
   sudo: yes

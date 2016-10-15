@@ -1,5 +1,5 @@
 ---
-# task for hadenlabs.haproxy
+# task for dgnest.haproxy
 
 - name: Installs dependences
   when: ansible_os_family == 'Debian'

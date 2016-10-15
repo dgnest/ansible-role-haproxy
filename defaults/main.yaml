@@ -1,5 +1,5 @@
 ---
-# defaults file for hadenlabs.haproxy
+# defaults file for dgnest.haproxy
 
 haproxy_maxconn: 2000
 haproxy_timeout: 30s

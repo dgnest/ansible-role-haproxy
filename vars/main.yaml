@@ -1,5 +1,5 @@
 ---
-# vars file for hadenlabs.haproxy
+# vars file for dgnest.haproxy
 
 # _haproxy_create_files:
 #   - path: "{{ _path_dir }}"

@@ -1,5 +1,5 @@
 ---
-# vars file for hadenlabs.haproxy (Ubuntu specific)
+# vars file for dgnest.haproxy (Ubuntu specific)
 
 _haproxy_package_dependencies:
   - build-essential

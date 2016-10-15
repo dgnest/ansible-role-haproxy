@@ -1,5 +1,5 @@
 ---
-# vars file for hadenlabs.haproxy (CentOS specific)
+# vars file for dgnest.haproxy (CentOS specific)
 
 _haproxy_package_dependencies:
   - build-essential
