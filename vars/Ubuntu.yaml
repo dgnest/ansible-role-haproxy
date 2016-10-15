@@ -3,7 +3,7 @@
 
 _haproxy_package_dependencies:
   - build-essential
-
+  - software-properties-common
 
 _haproxy_dependencies:
   - name: build-essential
@@ -11,3 +11,8 @@ _haproxy_dependencies:
 
 _haproxy_packages:
   - packages
+
+_haproxy_repos:
+  - ppa:vbernat/haproxy-1.5
+
+_haproxy_name_package: "haproxy"
