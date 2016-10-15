@@ -1,0 +1,34 @@
+---
+# task for hadenlabs.haproxy
+
+- name: Installs dependences
+  when: ansible_os_family == 'Debian'
+  sudo: yes
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  with_items: _haproxy_dependences
+  tags:
+    - haproxy
+
+- name: Add haproxy official APT repository
+  when: ansible_os_family == 'Debian'
+  sudo: yes
+  apt_repository:
+    repo: "{{ item }}"
+  with_items: _haproxy_repos
+  when: _haproxy_repos is defined
+  tags:
+    - apt-repository
+
+- name: setup haproxy configuration
+  sudo: yes
+  template: src="{{ item.src }}" dest="{{ item.dest }}"
+  with_items: _haproxy_templates
+  when: _haproxy_templates is defined
+  tags:
+    - reload_haproxy
+  notify:
+    - reload haproxy

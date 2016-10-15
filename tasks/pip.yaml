@@ -1,0 +1,8 @@
+---
+# task for hadenlabs.haproxy
+
+- name: Install packages via pip haproxy
+  sudo: yes
+  pip: name="{{ item.name }}" version="{{ item.version }}"
+  when: haproxy_pip_dependencies is defined
+  with_items: haproxy_pip_dependencies
