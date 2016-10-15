@@ -1,0 +1,11 @@
+---
+# task for hadenlabs.haproxy
+
+- name: copy templates
+  template:
+
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+
+  with_items: _haproxy.templates
+  when: _haproxy.templates is defined

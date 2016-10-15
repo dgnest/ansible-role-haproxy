@@ -1,0 +1,28 @@
+---
+
+# task file for hadenlabs.haproxy
+
+- name: Ensure apt cache is up to date
+  apt:
+    update_cache: yes
+
+
+- name: Install haproxy dependencies
+
+  apt: name={{ item }} state=present update_cache=yes
+
+  with_items: _haproxy_packages
+  tags:
+    - haproxy
+
+
+- name: Install haproxy
+  when: ansible_os_family == 'Debian'
+  sudo: yes
+  apt:
+    name: "{{ haproxy_name_package }}"
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  tags:
+    - haproxy
