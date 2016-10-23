@@ -13,11 +13,13 @@ _haproxy:
       dest: "/etc/default/haproxy"
     - src: "haproxy.cfg.j2"
       dest: "/etc/haproxy/haproxy.cfg"
+    - src: "maintenance.http"
+      dest: "/etc/haproxy/errors/maintenance.http"
 
 _haproxy_dependences:
   - software-properties-common
 
 _haproxy_repos:
-  - ppa:vbernat/haproxy-1.5
+  - ppa:vbernat/haproxy-"{{haproxy_version}}"
 
 _haproxy_name_package: "haproxy"
