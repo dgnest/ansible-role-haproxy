@@ -28,7 +28,7 @@ defaults
     errorfile 408 /etc/haproxy/errors/408.http
     errorfile 500 /etc/haproxy/errors/500.http
     errorfile 502 /etc/haproxy/errors/502.http
-    errorfile 503 /etc/haproxy/errors/503.http
+    errorfile 503 /etc/haproxy/errors/maintenance.http
     errorfile 504 /etc/haproxy/errors/504.http
 
 
@@ -112,6 +112,12 @@ backend {{ node.name }}
 {% endfor %}
 {% endif %}
 
+
+{% if haproxy_maintenance is defined %}
+backend web_maintenence
+    mode http
+    errorfile  503 /etc/haproxy/errors/maintenance.http
+{% endif %}
 
 listen stats *:1936
     stats enable
