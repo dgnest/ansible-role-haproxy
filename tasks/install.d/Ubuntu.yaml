@@ -8,9 +8,7 @@
 
 
 - name: Install haproxy dependencies
-
   apt: name={{ item }} state=present update_cache=yes
-
   with_items: _haproxy_packages
   tags:
     - haproxy
