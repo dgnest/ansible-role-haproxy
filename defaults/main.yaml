@@ -3,3 +3,6 @@
 
 haproxy_maxconn: 2000
 haproxy_timeout: 30s
+haproxy_version: 1.6
+# haproxy_maintenance: True
+haproxy_maintenance_message: "Este sitio se encuentra en mantenimiento"
