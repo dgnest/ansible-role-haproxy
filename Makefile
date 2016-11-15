@@ -10,46 +10,75 @@ SCRIPT_DIR = $(ROOT_DIR)/script
 WGET = wget
 
 # Bin scripts
+ANSIBLE_PROVISION = $(shell) $(SCRIPT_DIR)/provision.sh
+ANSIBLE_DEPLOY = $(shell) $(SCRIPT_DIR)/deploy.sh
 CLEAN = $(shell) $(SCRIPT_DIR)/clean.sh
 GVM = $(shell) $(SCRIPT_DIR)/gvm.sh
+GRIP = $(shell) $(SCRIPT_DIR)/grip.sh
 PYENV = $(shell) $(SCRIPT_DIR)/pyenv.sh
-SETUP = $(shell) $(SCRIPT_DIR)/setup.sh
 INSTALL = $(shell) $(SCRIPT_DIR)/install.sh
+LINTCODE = $(shell) $(SCRIPT_DIR)/lintcode.sh
 TEST = $(shell) $(SCRIPT_DIR)/test.sh
-RUNSERVER = $(shell) $(SCRIPT_DIR)/runserver.sh
 SYNC = $(shell) $(SCRIPT_DIR)/sync.sh
-LINGUIST = $(shell) $(SCRIPT_DIR)/linguist.sh
+WATCH = $(shell) $(SCRIPT_DIR)/watch.sh
 
 install:
-	$(INSTALL)
+		$(INSTALL)
+
+
+roles:
+		$(ROLES_ANSIBLE)
+
+
+ansible_provision:
+		$(ANSIBLE_PROVISION)
+
+
+ansible_deploy:
+		$(ANSIBLE_DEPLOY)
 
 
 clean:
-	$(CLEAN)
+		$(CLEAN)
+
+
+deploy:
+		$(ANSIBLE_PROVISION)
+		$(ANSIBLE_DEPLOY)
 
 
 distclean: clean
-	rm -rf $(ROOT_DIR)/lib
-	rm -rf $(ROOT_DIR)/*.egg-info
-	rm -rf $(ROOT_DIR)/demo/*.egg-info
+		rm -rf $(ROOT_DIR)/lib
+		rm -rf $(ROOT_DIR)/*.egg-info
+		rm -rf $(ROOT_DIR)/demo/*.egg-info
 
 
 environment:
-	$(PYENV)
+		$(PYENV)
+		$(GVM)
+		$(INSTALL)
+
+
+grip:
+		$(GRIP)
 
 
 maintainer-clean: distclean
-	rm -rf $(BIN_DIR)
-	rm -rf $(ROOT_DIR)/lib/
+		rm -rf $(BIN_DIR)
+		rm -rf $(ROOT_DIR)/lib/
 
 
-runserver:
-	$(RUNSERVER)
+lintcode:
+		$(LINTCODE)
 
 
 sync:
-	$(SYNC)
+		$(SYNC)
 
 
-linguist:
-	$(LINGUIST)
+watch:
+		$(WATCH)
+
+
+test:
+		$(TEST)
