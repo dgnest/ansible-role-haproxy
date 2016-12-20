@@ -1,7 +1,7 @@
 ---
 - hosts: localhost
   connection: local
-  vars:
-    example_var: {'key': 'value'}
+  # vars:
+  #   example_var: {'key': 'value'}
   roles:
-    - {role: Dgnest.Haproxy  }
+    - {role: ansible-role-haproxy }

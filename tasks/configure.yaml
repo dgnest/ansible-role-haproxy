@@ -9,7 +9,8 @@
     state: present
     update_cache: yes
     cache_valid_time: 3600
-  with_items: _haproxy_dependences
+  with_items: _haproxy_packages
+  when: _haproxy_packages is defined
   tags:
     - haproxy
 
