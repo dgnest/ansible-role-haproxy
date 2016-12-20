@@ -16,8 +16,9 @@ _haproxy:
     - src: "maintenance.http"
       dest: "/etc/haproxy/errors/maintenance.http"
 
-_haproxy_dependences:
+_haproxy_packages:
   - software-properties-common
+  - build-essential
 
 _haproxy_repos:
   - ppa:vbernat/haproxy-"{{haproxy_version}}"

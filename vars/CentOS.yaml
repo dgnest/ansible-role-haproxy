@@ -1,13 +1,10 @@
 ---
 # vars file for dgnest.haproxy (CentOS specific)
 
-_haproxy_package_dependencies:
+_haproxy_packages:
   - build-essential
-
-
-_haproxy_dependencies:
-  - name: build-essential
-    version: 1.0.0
 
 _haproxy_packages:
   - packages
+
+_haproxy_name_package: "haproxy"

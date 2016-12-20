@@ -1,9 +1,9 @@
 # handlers for dgnest.haproxy
 
 - name: restart haproxy
-  sudo: yes
+  become: true
   service: name=haproxy state=restarted
 
 - name: reload haproxy
-  sudo: yes
+  become: true
   service: name=haproxy state=reloaded
