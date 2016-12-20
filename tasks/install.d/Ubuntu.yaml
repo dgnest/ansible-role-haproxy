@@ -10,6 +10,7 @@
 - name: Install haproxy dependencies
   apt: name={{ item }} state=present update_cache=yes
   with_items: _haproxy_packages
+  when: _haproxy_packages is defined
   tags:
     - haproxy
 
@@ -18,7 +19,7 @@
   when: ansible_os_family == 'Debian'
   sudo: yes
   apt:
-    name: "{{ haproxy_name_package }}"
+    name: "{{ _haproxy_name_package }}"
     state: present
     update_cache: yes
     cache_valid_time: 3600
