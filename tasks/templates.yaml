@@ -1,0 +1,9 @@
+---
+# task for dgnest.haproxy
+
+- name: copy templates
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items: "{{ _haproxy.templates | default({}) }}"
+  when: _haproxy.templates is defined

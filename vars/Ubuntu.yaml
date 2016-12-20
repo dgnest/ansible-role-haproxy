@@ -1,0 +1,11 @@
+---
+# vars file for dgnest.haproxy (Ubuntu specific)
+
+_haproxy_packages:
+  - build-essential
+  - software-properties-common
+
+_haproxy_repos:
+  - ppa:vbernat/haproxy-"{{haproxy_version}}"
+
+_haproxy_name_package: "haproxy"

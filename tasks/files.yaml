@@ -1,0 +1,11 @@
+---
+# environment file for dgnest.haproxy
+
+- name: Create files haproxy
+  become: true
+  file:
+    path: "{{ item.path }}"
+    state: "{{ item.state }}"
+    owner: "{{ item.owner }}"
+  with_items: "{{ _haproxy_create_files | default({}) }}"
+  when: _haproxy_create_files is defined

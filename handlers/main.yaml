@@ -1,0 +1,9 @@
+# handlers for dgnest.haproxy
+
+- name: restart haproxy
+  become: true
+  service: name=haproxy state=restarted
+
+- name: reload haproxy
+  become: true
+  service: name=haproxy state=reloaded

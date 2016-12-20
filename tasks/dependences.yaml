@@ -1,0 +1,22 @@
+---
+# task file for dgnest.haproxy
+
+- name: Update package repositories
+  become: true
+  apt:
+    update_cache: True
+  when: ansible_distribution == "Ubuntu"
+  tags:
+    - apt
+    - update_cache
+
+- name: Install haproxy packages
+  become: true
+  package:
+    name: "{{ item }}"
+    state: present
+  register: install_haproxy_packages
+  when: _haproxy_packages is defined
+  with_items: "{{ _haproxy_packages | default([]) }}"
+  tags:
+    - dependencies
