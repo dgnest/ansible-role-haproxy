@@ -2,7 +2,7 @@
 # environment file for dgnest.haproxy
 
 - name: Create files haproxy
-  sudo: yes
+  become: true
   file:
     path: "{{ item.path }}"
     state: "{{ item.state }}"

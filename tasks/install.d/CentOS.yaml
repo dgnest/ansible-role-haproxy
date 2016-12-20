@@ -3,12 +3,12 @@
 
 - name: Ensure apt cache is up to date
   yum:
-    update_cache: yes
+    update_cache: true
 
 
 - name: Install haproxy dependencies
 
-  yum: name={{ item }} state=present update_cache=yes
+  yum: name={{ item }} state=present update_cache=true
 
   with_items: _haproxy_packages
   tags:

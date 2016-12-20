@@ -2,7 +2,7 @@
 # task file for dgnest.haproxy
 
 - name: Update package repositories
-  sudo: yes
+  become: true
   apt:
     update_cache: True
   when: ansible_distribution == "Ubuntu"
@@ -11,7 +11,7 @@
     - update_cache
 
 - name: Install haproxy package dependencies
-  sudo: yes
+  become: true
   apt:
     name: "{{ item }}"
     state: present
@@ -24,7 +24,7 @@
 - debug: var=install_haproxy_package_dependencies.stdout_lines
 
 - name: Install haproxy dependencies
-  sudo: yes
+  become: true
   apt:
     name: "{{ item.name }}"
     state: present
