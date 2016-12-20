@@ -10,28 +10,13 @@
     - apt
     - update_cache
 
-- name: Install haproxy package dependencies
+- name: Install haproxy packages
   become: true
-  apt:
+  package:
     name: "{{ item }}"
     state: present
-  register: install_haproxy_package_dependencies
-  when: _haproxy_package_dependencies is defined
-  with_items: _haproxy_package_dependencies
+  register: install_haproxy_packages
+  when: _haproxy_packages is defined
+  with_items: "{{ _haproxy_packages | default([]) }}"
   tags:
-    - apt
     - dependencies
-- debug: var=install_haproxy_package_dependencies.stdout_lines
-
-- name: Install haproxy dependencies
-  become: true
-  apt:
-    name: "{{ item.name }}"
-    state: present
-  register: install_haproxy_dependencies
-  when: _haproxy_dependencies is defined
-  with_items: _haproxy_dependencies
-  tags:
-    - apt
-    - dependencies
-- debug: var=install_haproxy_dependencies.stdout_lines

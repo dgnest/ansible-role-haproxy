@@ -1,12 +1,19 @@
 ---
 # task for dgnest.haproxy
 
-- include: install.d/CentOS.yaml
-  when: ansible_distribution == "CentOS"
-  tags:
-    - haproxy
-
-- include: install.d/Ubuntu.yaml
+- name: Update package repositories
+  become: true
+  apt:
+    update_cache: True
   when: ansible_distribution == "Ubuntu"
+  tags:
+    - apt
+    - update_cache
+
+- name: Install haproxy
+  become: true
+  package:
+    name: "{{ _haproxy_name_package }}"
+    state: present
   tags:
     - haproxy
