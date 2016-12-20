@@ -9,7 +9,7 @@
     state: present
     update_cache: true
     cache_valid_time: 3600
-  with_items: _haproxy_packages
+  with_items: "{{ _haproxy_packages | default([]) }}"
   when: _haproxy_packages is defined
   tags:
     - haproxy
@@ -19,7 +19,7 @@
   become: true
   apt_repository:
     repo: "{{ item }}"
-  with_items: _haproxy_repos
+  with_items: "{{ _haproxy_repos | default([]) }}"
   when: _haproxy_repos is defined
   tags:
     - apt-repository
@@ -27,7 +27,7 @@
 - name: setup haproxy configuration
   become: true
   template: src="{{ item.src }}" dest="{{ item.dest }}"
-  with_items: _haproxy_templates
+  with_items: "{{ _haproxy_templates | default({}) }}"
   when: _haproxy_templates is defined
   tags:
     - reload_haproxy
