@@ -6,6 +6,6 @@ _haproxy_packages:
   - software-properties-common
 
 _haproxy_repos:
-  - ppa:vbernat/haproxy-"{{haproxy_version}}"
+  - "ppa:vbernat/haproxy-{{haproxy_version}}"
 
 _haproxy_name_package: "haproxy"

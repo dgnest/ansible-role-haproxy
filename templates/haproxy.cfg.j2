@@ -33,7 +33,7 @@ defaults
 
 
 frontend http
-    bind *:{{ port_http }}
+    bind *:{{ haproxy_port_http }}
     {% if name_domain is defined %}
     acl correctdomain hdr(host)	{{ name_domain }}
     {% endif %}
