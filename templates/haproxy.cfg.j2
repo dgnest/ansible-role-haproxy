@@ -34,16 +34,16 @@ defaults
 
 frontend http
     bind *:{{ haproxy_port_http }}
-    {% if name_domain is defined %}
-    acl correctdomain hdr(host)	{{ name_domain }}
+    {% if haproxy_name_domain is defined %}
+    acl correctdomain hdr(host)	{{ haproxy_name_domain }}
     {% endif %}
     {% for node in haproxy_backends %}
         {% for acl in node.acl %}
     acl {{ node.name }}  {{ acl.type }} {{ acl.value }}
         {% endfor %}
     {% endfor %}
-    {% if name_domain is defined %}
-        # redirect location http://{{ name_domain }} if !correctdomain
+    {% if haproxy_name_domain is defined %}
+        # redirect location http://{{ haproxy_name_domain }} if !correctdomain
     {% endif %}
     {% for node in haproxy_backends %}
     use_backend {{ node.name }} if {{ node.name }}
