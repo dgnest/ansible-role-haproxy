@@ -119,7 +119,8 @@ backend web_maintenence
     errorfile  503 /etc/haproxy/errors/maintenance.http
 {% endif %}
 
-listen stats *:1936
+listen stats
+    bind *:{{ haproxy_port_admin }}
     stats enable
     stats uri /
     stats hide-version

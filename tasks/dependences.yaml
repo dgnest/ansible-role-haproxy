@@ -1,11 +1,25 @@
 ---
 # task file for dgnest.haproxy
 
+- name: Add haproxy official APT repository
+  become: true
+  apt_repository:
+    repo: "{{ item }}"
+  with_items: "{{ _haproxy_repos | default([]) }}"
+  when:
+    - ansible_os_family == 'Debian'
+    - ansible_distribution == "Ubuntu"
+    - _haproxy_repos is defined
+  tags:
+    - apt-repository
+
 - name: Update package repositories
   become: true
   apt:
     update_cache: True
-  when: ansible_distribution == "Ubuntu"
+  when:
+    - ansible_distribution == "Ubuntu"
+    - ansible_distribution == "Debian"
   tags:
     - apt
     - update_cache

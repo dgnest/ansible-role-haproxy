@@ -1,31 +1,6 @@
 ---
 # task for dgnest.haproxy
 
-- name: Installs dependences
-  become: true
-  apt:
-    name: "{{ item }}"
-    state: present
-    update_cache: true
-    cache_valid_time: 3600
-  with_items: "{{ _haproxy_packages | default([]) }}"
-  when:
-    - ansible_os_family == 'Debian'
-    - _haproxy_packages is defined
-  tags:
-    - haproxy
-
-- name: Add haproxy official APT repository
-  become: true
-  apt_repository:
-    repo: "{{ item }}"
-  with_items: "{{ _haproxy_repos | default([]) }}"
-  when:
-    - ansible_os_family == 'Debian'
-    - _haproxy_repos is defined
-  tags:
-    - apt-repository
-
 - name: setup haproxy configuration
   become: true
   template: src="{{ item.src }}" dest="{{ item.dest }}"
