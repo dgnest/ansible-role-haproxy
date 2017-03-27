@@ -13,11 +13,9 @@
 
 - include: pip.yaml
 
-- include: configure.yaml
-
 - include: install.yaml
 
-- include: templates.yaml
+- include: configure.yaml
 
 - include: environment.yaml
 
